@@ -1,0 +1,98 @@
+id_user;username;password;nama;sub_laboratorium;id_order_unit;penyelia;email_penyelia;kepalaunit;email_kepalaunit;tipe;is_active;last_login
+LAB001;90002459;$2y$10$76SAQyao8rcrGJ5g1iB8hu6A1JotD8LhznN9SFQvSE9QuYNQK.hRS;Prasojo;Administrasi;ADM;Prasojo Tri;prasojo.tri@sidomuncul.co.id;Erni Rusmalawati;prasojo.tri@sidomuncul.co.id;SysAdmin;Yes;NULL
+LAB002;90001737;$2y$10$76SAQyao8rcrGJ5g1iB8hu6A1JotD8LhznN9SFQvSE9QuYNQK.hRS;Dewie Koes Harayu;Lab Kimia 1 MTS;MTS;Dewie Koes Harayu;Groupmts.sm@gmail.com;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;	Supervisor;Yes;NULL
+LAB003;90001627;$2y$10$76SAQyao8rcrGJ5g1iB8hu6A1JotD8LhznN9SFQvSE9QuYNQK.hRS;Dwi Rahayu Handayani;Lab Kimia 2 BBG;BBG;Dwi Rahayu Handayani;lingkunganbahanbaku@gmail.com;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;	Supervisor;Yes;NULL
+LAB004;90001078;$2y$10$76SAQyao8rcrGJ5g1iB8hu6A1JotD8LhznN9SFQvSE9QuYNQK.hRS;Candra Ratnaningsih;Lab Mikrobiologi;MKR;Candra Ratnaningsih;Laboratmikrobiologi.sm@gmail.com;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;Supervisor;Yes;NULL
+LAB005;90001733;$2y$10$76SAQyao8rcrGJ5g1iB8hu6A1JotD8LhznN9SFQvSE9QuYNQK.hRS;Indah Krismiyati;Lab Kimia 1 OMG;OMG;Indah Krismiyati;Otcsimplisia@gmail.com;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;	Supervisor;Yes;NULL
+LAB006;90001330;$2y$10$wSAI0/BGYxlKmTphiUYcaubT28lBJ1nNDFcC0Zzlk4UPeK/zO/QXC;Umi Ardani;Administrasi;ADM;Umi Ardani;laboratorium.order@gmail.com;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;Admin Lab;Yes;NULL
+LAB007;90001127;$2y$10$S0o2k6FFr2Z.XD3WE1aNtOyhtk47xV8zR7.CwYcUcljZyex6J/MH.;Erni Rusmalawati;Administrasi;ADM;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;Kepala Unit;Yes;NULL
+LAB008;90001381;$2y$10$76SAQyao8rcrGJ5g1iB8hu6A1JotD8LhznN9SFQvSE9QuYNQK.hRS;Dwi Anik P;Administrasi;ADM;;;Erni Rusmalawati;;Admin SAP;Yes;NULL
+LAB013;90005105;$2y$10$g98dT5kNXgmD5eZcwGykE./yLyWCfOkSrapfsXdzAkP8MNnhs0Fnm;Oey Stevanus Ardian Harsono;Lab Kimia 2 BBG;BBG;Dwi Rahayu Handayani;lingkunganbahanbaku@gmail.com;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User-Reagen;Yes;NULL
+LAB014;90004952;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Adela Syarifina;Lab PCR;PCR;Candra Ratnaningsih;Laboratmikrobiologi.sm@gmail.com;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB015;90003530;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Aldi Ridson Huda;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB016;90002852;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Ana Maulia Ulfah;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB017;90002281;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Anita Martiana;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB018;90003746;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Annisa Marda Gupita;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB019;90003516;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Annisa Wahyu Setyaningrum;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB020;90002988;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Antalgin Prabuningtyas;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB021;90002903;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Aprilya Muvidasari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB022;90002296;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Ari Widyastutik;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB023;90001732;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Asih Dyah Ekowati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB024;90003546;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Cahya Amalia Pramesti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB025;90003821;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Cicilia Lilik Waskinasih;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB026;90003035;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Citra Arum Pawestri;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB027;90004602;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Della Savira;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB028;90005494;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Deniza Dian Wardoyo;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB029;90002508;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Denok Wulandari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB030;90001735;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Desi Kurniasari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB031;90003277;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Desi Wulandari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB032;90005483;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Desta Firontika;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB033;90003091;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Desy Rachmalisa Verawati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB034;90001527;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Dewi Endah Puspitasari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB035;90003493;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Dewi Rahmawati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB036;90001737;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Dewie Koes Harayu;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB037;90001564;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Diah Pravitasari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB038;90003547;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Dian Oktafianny Purna Aditya;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB039;90004165;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Didha Rizki Sholikha;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB040;90003090;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Dita Nuryuliastuti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB041;90001736;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Dwi Lestari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB042;90001627;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Dwi Rahayu Handayani;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB043;90002566;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Dwi Yani;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB044;90003441;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Fajrul Suryandari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB045;90006233;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Fesa Aulia Nurul Haq;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB046;90005569;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Fira Fitriana;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB047;90002760;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Fitri Permanasari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB048;90003671;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Galih Andi Rahmanto;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB049;90005510;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Galuh Pravita Briliani;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB050;90003428;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Hartini;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB051;90004186;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Ifa Masfufa Hidayanti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB052;90005531;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Imro'Atun Mahmudah;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB053;90001733;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Indah Krismiyati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB054;90004735;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Isma Datin Riri Cahya Puspita;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB055;90004547;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Iyon Praditya;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB056;90003581;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Jafar Adi Nugroho;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB057;90002987;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Kharisma Dessy Asmarandani;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB058;90004577;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Kholiq Setiawan;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB059;90003092;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Lesi Deska Ardanti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB060;90002743;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Malfin Delsia Kasandra;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB061;90005644;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Mardhiyyatush Sholihah;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB062;90002139;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Marita Widyaningrum;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB063;90002586;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Meytrin Delfi Irawati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB064;90005524;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Michelle Oryza Devi Natasha;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB065;90003883;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Miftachul Jannah;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB066;90003616;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Murti Cahyaningrum;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB067;90006157;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Nindarwoto Hera Indrasti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB068;90005492;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Nindya Novita Wahyu Ashari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB069;90003048;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Nova Shintia Bokau;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB070;90004672;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Novi Aditya Kumalasari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB071;90001624;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Nur Ika Permatasari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB072;90005105;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;"Oey, Stevanus Ardian Harsono";;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB073;90002169;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Pradita Anggriani;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB074;90003474;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Pramita Aryati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB075;90005527;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Puput Wahyuningtias;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB076;90005165;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Quthrotun Nada Al Baridah;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB077;90006385;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Ratna Kusuma Harjanti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB078;90002607;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Reni Arifianti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB079;90003881;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Retno Rena Pratama;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB080;90002128;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Retno Widyaningsih;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB081;90004306;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Rima Santi Rohmawati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB082;90005093;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Ririt Kurniawati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB083;90006462;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Ritho Ritura;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB084;90006269;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Rizky Enggar Asnaningsih;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB085;90006283;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Sabrina Intan Salsabila;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB086;90006039;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Sandya Puspa Rahayu;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB087;90004546;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Siti Mu'Awanah;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB088;90001457;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Sri Daryati;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB089;90003553;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Sri Nur Daryasih;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB090;90002294;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Sulis Irtanti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB091;90002083;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Suwarti;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB092;90002847;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Tri Ambar Setyaningsih;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB093;90006254;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Tri Nur Janah;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB094;90001790;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Trisma Wulansari;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB095;90006264;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Ulyana Nur Habitoh;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB096;90002468;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Vania Mardika Syavitri;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB097;90006160;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Winda Ludfi Ariani;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB098;90002537;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Wulan Tria Luthfiana Aryani;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB099;90003601;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Yosia Adi Susetyo;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB100;90006171;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Yudha Hery Setyawan;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL
+LAB101;90002674;$2y$10$By6Xp7bYbUvSfWVKnmUjYOlu22Q69PdFDkdAId1DRQbt5NxOReKGa;Yusi Nora Hermada;;;;;Erni Rusmalawati;erni.rusmalawati@sidomuncul.co.id;User;Yes;NULL

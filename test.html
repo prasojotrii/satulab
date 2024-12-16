@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Timeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .timeline {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .timeline th, .timeline td {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 5px;
+        }
+        .timeline .quarter {
+            background-color: #333;
+            color: white;
+        }
+        .timeline .month {
+            background-color: #eee;
+        }
+        .timeline .date {
+            font-size: 12px;
+            color: gray;
+        }
+        .timeline .task {
+            position: relative;
+            background-color: #2c6ca4;
+            color: white;
+            text-align: left;
+            padding: 5px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Project Timeline</h2>
+
+<table class="timeline">
+    <tr>
+        <th colspan="13" class="quarter">Q1</th>
+    </tr>
+    <tr>
+        <td colspan="4" class="month">JAN</td>
+        <td colspan="4" class="month">FEB</td>
+        <td colspan="5" class="month">MAR</td>
+    </tr>
+    <tr class="date">
+        <td>2</td><td>9</td><td>16</td><td>23</td>
+        <td>6</td><td>13</td><td>20</td><td>27</td>
+        <td>6</td><td>13</td><td>20</td><td>27</td><td>31</td>
+    </tr>
+    <tr>
+        <td colspan="4" class="task">Project Charter</td>
+        <td colspan="5" class="task">Plan Review</td>
+        <td colspan="4" class="task">Initiation</td>
+    </tr>
+</table>
+
+</body>
+</html>

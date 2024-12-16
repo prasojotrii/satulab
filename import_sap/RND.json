@@ -1,0 +1,248 @@
+{
+	"id_req": "900001232",
+	"id_kar": "1",
+	"urgent": "0",
+	"plant": "S100",
+	"sloc": "K120",
+	"sloc_desc": "BBNS",
+	"zyear": "2024",
+	"jenis_material": "Cairan",
+	"material": "00000000005000123121",
+	"zbentuk": "Cair",
+	"desc": "Ekstraks",
+	"batch": "0001",
+	"no_karantina": "",
+	"batch_lapangan": "",
+	"manuf_date": "2024-05-30",
+	"ed": "2024-05-30",
+	"uji_ulang": "2024-05-30",
+	"tgl_karantina": "2024-05-30",
+	"zmasalah": "VISCOSITA",
+	"desc_mslh": "",
+	"nama_qc": "90002459",
+	"nama_ka": "90003545",
+	"nama_koor": "90005751",
+	"dqc": true,
+	"dlab": false,
+	"drnd": false,
+	"zind": false,
+	"status_kar": "Open",
+	"progress": "",
+	"insplot": 0,
+	"order": "",
+	"matdoc": "",
+	"matyears": 0,
+	"ztransaksi": "Blocked",
+	"quantity": 10.0,
+	"uom": "KG",
+	"reff": "",
+	"spec": [
+		{
+			"oprshrttxt": "QC",
+			"mstrchar": "MKOA0043",
+			"short_text": "Bentuk",
+			"spec": "Cairan",
+			"result": "Cairan",
+			"manual_add": false,
+			"valid": "Sesuai"
+		},
+		{
+			"oprshrttxt": "QC",
+			"mstrchar": "MKMG0017",
+			"short_text": "Angka Lempeng Total 1000 kol/ml",
+			"spec": "Cairan",
+			"result": "0",
+			"manual_add": false,
+			"valid": "Sesuai"
+		},
+		{
+			"oprshrttxt": "QC",
+			"mstrchar": "MKOB0238",
+			"short_text": "Warna",
+			"spec": "Coklat, hitam , agak oranye",
+			"result": "Coklat, hitam , agak oranye",
+			"manual_add": false,
+			"valid": "Sesuai"
+		},
+		{
+			"oprshrttxt": "QC",
+			"mstrchar": "MKOC0003",
+			"short_text": "Aroma",
+			"spec": "Khas",
+			"result": "",
+			"manual_add": false,
+			"valid": "Sesuai"
+		},
+		{
+			"oprshrttxt": "QC",
+			"mstrchar": "MKOD0007",
+			"short_text": "Rasa",
+			"spec": "Pahit",
+			"result": "",
+			"manual_add": false,
+			"valid": "Sesuai"
+		},
+		{
+			"oprshrttxt": "QC",
+			"mstrchar": "MKFX2369",
+			"short_text": "Visco (Allus) 4-30mpas",
+			"spec": "",
+			"result": "",
+			"manual_add": false,
+			"valid": "Sesuai"
+		},
+		{
+			"oprshrttxt": "QC",
+			"mstrchar": "MKFX2312",
+			"short_text": "Kadar Total Solid (Allus) 22-55%",
+			"spec": "",
+			"result": "42,98%",
+			"manual_add": false,
+			"valid": "Sesuai"
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKOA0043",
+			"short_text": "Bentuk",
+			"spec": "Cairan",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKMG0017",
+			"short_text": "Angka Lempeng Total 1000 kol/ml",
+			"spec": "Cairan",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKOB0238",
+			"short_text": "Warna",
+			"spec": "Coklat, hitam , agak oranye",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKOC0003",
+			"short_text": "Aroma",
+			"spec": "Khas",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKOD0007",
+			"short_text": "Rasa",
+			"spec": "Pahit",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKFX2369",
+			"short_text": "Visco (Allus) 4-30mpas",
+			"spec": "",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKFX2312",
+			"short_text": "Kadar Total Solid (Allus) 22-55%",
+			"spec": "",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKKX0342",
+			"short_text": "pH 5-6",
+			"spec": "",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKKX0001",
+			"short_text": "Aflatoksin 20yg/kg",
+			"spec": "",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKKA0075",
+			"short_text": "Curcuminoid 0.01%",
+			"spec": "",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKME0004",
+			"short_text": "Angka Kapang 1000 kol/ml",
+			"spec": "",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKMF0004",
+			"short_text": "Angka Khamir 1000 kol/ml",
+			"spec": "",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKMB0001",
+			"short_text": "Escherichia coli (negatif)",
+			"spec": "Negatif",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKMAQ0004",
+			"short_text": "Salmonella sp negatif",
+			"spec": "Negatif",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKMC0003",
+			"short_text": "P. Aeruginosa negatif",
+			"spec": "Negatif",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "LAB",
+			"mstrchar": "MKMD0007",
+			"short_text": "Staph. Aureus negatif",
+			"spec": "Negatif",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "RND",
+			"mstrchar": "RND0001",
+			"short_text": "Organolepik",
+			"spec": "Jernih , Sedikit kental , Aroma alkohol setelah itu sereh , Dingin kemudian mengering pada telapak tangan setelah diusap",
+			"result": "",
+			"manual_add": false
+		},
+		{
+			"oprshrttxt": "RND",
+			"mstrchar": "RND0002",
+			"short_text": "Kadar Alkohol",
+			"spec": "Hasil sampling 58-71.20%",
+			"result": "",
+			"manual_add": false
+		}
+	]
+}

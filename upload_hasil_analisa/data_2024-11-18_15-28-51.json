@@ -1,0 +1,56 @@
+{
+    "plant": "S100",
+    "id_kar": "22",
+    "month": "11",
+    "years": "2024",
+    "id_req": "1000000097",
+    "ed_plus": "365",
+    "ed_next": "2025-12-18",
+    "status_kar": "Close",
+    "keputusan_qc": "okkk",
+    "kesimpulan_qc": "Bahan \/ Produk diproses ulang",
+    "spec": [
+        {
+            "plant": "S100",
+            "id_kar": "22",
+            "month": "11",
+            "years": "2024",
+            "sample_ke": "1",
+            "oprshrttxt": "QC GBBNS",
+            "mstrchar": "MKOD0124",
+            "short_text": "Rasa (stlh sdh 0.1G\/100ML)manis",
+            "spec": "Manis",
+            "result": "10",
+            "manual_add": "0",
+            "valid": ""
+        },
+        {
+            "plant": "S100",
+            "id_kar": "22",
+            "month": "11",
+            "years": "2024",
+            "sample_ke": "1",
+            "oprshrttxt": "Lab Analisa",
+            "mstrchar": "MKKX0165",
+            "short_text": "Kadar Air 4,5%",
+            "spec": "Upper: 4,5000000",
+            "result": "450",
+            "manual_add": "0",
+            "valid": ""
+        },
+        {
+            "plant": "S100",
+            "id_kar": "22",
+            "month": "11",
+            "years": "2024",
+            "sample_ke": "1",
+            "oprshrttxt": "Lab Analisa",
+            "mstrchar": "MKKX0180",
+            "short_text": "Kadar Aspartam 99-102%",
+            "spec": "99,0000000 ~ 102,0000000",
+            "result": "1.05",
+            "manual_add": "0",
+            "valid": ""
+        }
+    ]
+}

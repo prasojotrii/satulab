@@ -1,0 +1,201 @@
+id_akses;id_user;id_halaman;id_role;nama_role;nama_halaman;title;url;tipe;view;create;update;delete
+140;LAB001;32;0;;Dashboard;Dashboard;dashboard;0;1;0;0;0
+142;LAB001;30;0;;Kategori Instrumen;Daftar Kategori Instrumen;kategori_instrumen;1;1;1;1;0
+144;LAB002;32;0;;Dashboard;Dashboard;dashboard;0;1;0;0;0
+145;LAB002;1;0;;Daftar Order Internal;Daftar Order Internal;data_order;1;1;1;0;1
+146;LAB003;32;0;;Dashboard;Dashboard;dashboard;0;1;0;0;0
+147;LAB003;1;0;;Daftar Order Internal;Daftar Order Internal;data_order;1;1;1;0;1
+148;LAB005;32;0;;Dashboard;Dashboard;dashboard;0;1;0;0;0
+149;LAB005;1;0;;Daftar Order Internal;Daftar Order Internal;data_order;1;1;1;0;1
+150;LAB006;32;0;;Dashboard;Dashboard;dashboard;0;1;0;0;0
+151;LAB006;1;0;;Daftar Order Internal;Daftar Order Internal;data_order;1;1;1;0;1
+154;LAB007;32;0;;Dashboard;Dashboard;dashboard;0;1;0;0;0
+155;LAB007;1;0;;Daftar Order Internal;Daftar Order Internal;data_order;1;1;1;0;1
+156;LAB007;30;0;;Kategori Instrumen;Daftar Kategori Instrumen;kategori_instrumen;1;1;1;0;0
+158;LAB007;2;0;;Daftar Instrumen;Daftar Instrumen;instrumen;2;1;1;0;0
+160;LAB004;32;0;;Dashboard;Dashboard;dashboard;0;1;0;0;0
+161;LAB004;1;0;;Daftar Order Internal;Daftar Order Internal;data_order;1;1;1;0;1
+163;LAB001;2;0;;Daftar Instrumen;Daftar Instrumen;instrumen;2;1;1;0;0
+164;LAB001;3;0;;Daftar Glassware;Daftar Glassware;glassware;2;1;0;1;0
+166;LAB007;31;0;;Kategori Glassware;Daftar Kategori Glassware;kategori_glassware;1;1;1;1;0
+167;LAB008;32;0;;Dashboard;Dashboard;dashboard;0;1;0;0;0
+168;LAB008;1;0;;Daftar Order Internal;Daftar Order Internal;data_order;1;1;1;0;1
+188;LAB013;32;73;User-Reagen;Dashboard;Dashboard;dashboard;0;1;0;0;0
+194;LAB013;38;0;;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;1;1;0
+195;LAB001;38;0;;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;1;0;0
+198;LAB014;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+199;LAB015;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+200;LAB016;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+201;LAB017;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+202;LAB018;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+203;LAB019;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+204;LAB020;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+205;LAB021;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+206;LAB022;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+207;LAB023;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+208;LAB024;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+209;LAB025;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+210;LAB026;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+211;LAB027;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+212;LAB028;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+213;LAB029;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+214;LAB030;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+215;LAB031;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+216;LAB032;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+217;LAB033;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+218;LAB034;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+219;LAB035;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+220;LAB036;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+221;LAB037;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+222;LAB038;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+223;LAB039;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+224;LAB040;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+225;LAB041;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+226;LAB042;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+227;LAB043;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+228;LAB044;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+229;LAB045;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+230;LAB046;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+231;LAB047;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+232;LAB048;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+233;LAB049;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+234;LAB050;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+235;LAB051;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+236;LAB052;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+237;LAB053;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+238;LAB054;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+239;LAB055;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+240;LAB056;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+241;LAB057;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+242;LAB058;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+243;LAB059;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+244;LAB060;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+245;LAB061;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+246;LAB062;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+247;LAB063;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+248;LAB064;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+249;LAB065;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+250;LAB066;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+251;LAB067;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+252;LAB068;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+253;LAB069;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+254;LAB070;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+255;LAB071;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+256;LAB072;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+257;LAB073;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+258;LAB074;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+259;LAB075;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+260;LAB076;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+261;LAB077;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+262;LAB078;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+263;LAB079;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+264;LAB080;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+265;LAB081;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+266;LAB082;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+267;LAB083;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+268;LAB084;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+269;LAB085;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+270;LAB086;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+271;LAB087;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+272;LAB088;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+273;LAB089;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+274;LAB090;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+275;LAB091;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+276;LAB092;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+277;LAB093;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+278;LAB094;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+279;LAB095;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+280;LAB096;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+281;LAB097;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+282;LAB098;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+283;LAB099;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+284;LAB100;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+285;LAB101;32;75;User;Dashboard;Dashboard;dashboard;0;1;0;0;0
+286;LAB014;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+287;LAB015;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+288;LAB016;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+289;LAB017;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+290;LAB018;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+291;LAB019;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+292;LAB020;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+293;LAB021;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+294;LAB022;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+295;LAB023;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+296;LAB024;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+297;LAB025;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+298;LAB026;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+299;LAB027;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+300;LAB028;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+301;LAB029;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+302;LAB030;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+303;LAB031;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+304;LAB032;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+305;LAB033;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+306;LAB034;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+307;LAB035;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+308;LAB036;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+309;LAB037;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+310;LAB038;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+311;LAB039;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+312;LAB040;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+313;LAB041;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+314;LAB042;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+315;LAB043;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+316;LAB044;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+317;LAB045;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+318;LAB046;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+319;LAB047;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+320;LAB048;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+321;LAB049;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+322;LAB050;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+323;LAB051;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+324;LAB052;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+325;LAB053;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+326;LAB054;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+327;LAB055;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+328;LAB056;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+329;LAB057;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+330;LAB058;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+331;LAB059;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+332;LAB060;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+333;LAB061;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+334;LAB062;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+335;LAB063;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+336;LAB064;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+337;LAB065;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+338;LAB066;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+339;LAB067;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+340;LAB068;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+341;LAB069;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+342;LAB070;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+343;LAB071;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+344;LAB072;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+345;LAB073;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+346;LAB074;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+347;LAB075;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+348;LAB076;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+349;LAB077;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+350;LAB078;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+351;LAB079;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+352;LAB080;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+353;LAB081;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+354;LAB082;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+355;LAB083;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+356;LAB084;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+357;LAB085;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+358;LAB086;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+359;LAB087;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+360;LAB088;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+361;LAB089;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+362;LAB090;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+363;LAB091;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+364;LAB092;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+365;LAB093;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+366;LAB094;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+367;LAB095;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+368;LAB096;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+369;LAB097;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+370;LAB098;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+371;LAB099;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+372;LAB100;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
+373;LAB101;38;77;User;Daftar Reagen & Media;Daftar Reagen & Media;bahan;1;1;0;0;0
