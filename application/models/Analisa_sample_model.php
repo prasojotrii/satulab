@@ -98,7 +98,7 @@ class Analisa_sample_model extends CI_Model
 		$this->db->where('oprshrttxt', 'LAB');
 		$this->db->where_in('id_req', $ids);
 		$query = $this->db->get();
-		return $query->result_array();
+		return $query->zresult_array();
 	}
 
 	public function update_bentuk($material, $bentuk)
@@ -187,7 +187,7 @@ class Analisa_sample_model extends CI_Model
 		if ($_POST['length'] != -1)
 			$this->db->limit($_POST['length'], $_POST['start']);
 		$query = $this->db->get();
-		return $query->result();
+		return $query->zresult();
 	}
 
 	function count_filtered()
@@ -321,7 +321,7 @@ class Analisa_sample_model extends CI_Model
 		// Ambil data dari tabel tb_analisa_request_sap_spec
 		$this->db->where('id_req', $id_req);
 		$query = $this->db->get('tb_analisa_request_spec');
-		$data_sap_spec = $query->result_array(); // Mengambil semua hasil sebagai array
+		$data_sap_spec = $query->zresult_array(); // Mengambil semua hasil sebagai array
 
 		// Gabungkan data menjadi satu array
 		$data_to_send = array(
@@ -385,10 +385,10 @@ class Analisa_sample_model extends CI_Model
 		curl_exec($ch);
 	}
 
-	public function update_result_to_all($id_req, $mstrchar, $result, $valid)
+	public function update_zresult_to_all($id_req, $mstrchar, $zresult, $valid)
 	{
 		$data = [
-			'result' => $result,
+			'zresult' => $zresult,
 			'valid' => $valid
 		];
 
@@ -396,5 +396,79 @@ class Analisa_sample_model extends CI_Model
 		$this->db->where('mstrchar', $mstrchar);
 
 		return $this->db->update('tb_analisa_request_spec', $data);
+	}
+	public function get_lab_data($zjenis_lab)
+	{
+		$this->db->select('id,sample_ke, short_text, spec, zresult, valid');
+		$this->db->from('tb_analisa_request_spec');
+		$this->db->where('cat_oprshrttxt', 'LAB');
+		$this->db->where('zjenis_lab', $zjenis_lab); // Filter zjenis_lab mikro/kimia
+		$query = $this->db->get();
+		return $query->zresult_array();
+	}
+
+	public function getKimiaMikroStatus($id_req)
+	{
+		// Query untuk mendapatkan data kimia dan mikro
+		$this->db->select('kimia, mikro');
+		$this->db->from('tb_analisa_request_sap');
+		$this->db->where('id_req', $id_req);
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->row_array(); // Kembalikan data dalam bentuk array
+		}
+
+		return null; // Jika tidak ditemukan, kembalikan null
+	}
+	public function get_sample_data($zjenis_lab, $sample_ke)
+	{
+		$this->db->select('short_text, spec, zresult, valid');
+		$this->db->from('tb_analisa_request_spec');
+		$this->db->where('zjenis_lab', $zjenis_lab);
+		$this->db->where('sample_ke', $sample_ke);
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->zresult(); // Mengembalikan hasil query
+		}
+		return false; // Jika tidak ada data
+	}
+
+	public function cek_indikator_lab($id_req)
+	{
+		// Cek apakah ada data kimia
+		$this->db->select('id_req');
+		$this->db->from('tb_analisa_request_spec');
+		$this->db->where('zjenis_lab', 'kimia');
+		$this->db->where('id_req', $id_req);
+		$query_kimia = $this->db->get();
+
+		// Cek apakah ada data mikro
+		$this->db->select('id_req');
+		$this->db->from('tb_analisa_request_spec');
+		$this->db->where('zjenis_lab', 'mikro');
+		$this->db->where('id_req', $id_req);
+		$query_mikro = $this->db->get();
+
+		// Menyusun hasil
+		$zresult = [
+			'indicator_lab' => ($query_kimia->num_rows() > 0 || $query_mikro->num_rows() > 0) ? true : false,
+			'indicator_kimia' => $query_kimia->num_rows() > 0,
+			'indicator_mikro' => $query_mikro->num_rows() > 0,
+			'indicator_rnd' => $this->cek_indikator_rnd($id_req)
+		];
+
+		return $zresult;
+	}
+	public function cek_indikator_rnd($id_req)
+	{
+		$this->db->select('id_req');
+		$this->db->from('tb_analisa_request_spec');
+		$this->db->where('zjenis_lab', 'rnd');
+		$this->db->where('id_req', $id_req);
+		$query_rnd = $this->db->get();
+
+		return ($query_rnd->num_rows() > 0);
 	}
 }

@@ -658,8 +658,9 @@
 									<th style="padding: 2px 5px;">No</th>
 									<th style="padding: 2px 5px;">Parameter</th>
 									<th style="padding: 2px 5px;">Spec</th>
+									<th style="padding: 2px 5px;">Type MIC</th>
 									<th style="padding: 2px 5px;">Hasil</th>
-									<th style="padding: 2px 5px;">Keterangan</th>
+									<th style="padding: 2px 5px;">Evaluation</th>
 							</thead>
 							<tbody>
 								<!-- Rows will be appended here dynamically -->
@@ -688,6 +689,7 @@
 								<tr id="div_jumlah_sample_lab" hidden>
 									<th style="border: none; padding: 0px;">Jumlah Sample LAB</th>
 									<td style="border: none; padding: 0px;">: <span id="info_sample_lab"></span></td>
+
 								</tr>
 							</tbody>
 						</table>
@@ -2336,7 +2338,7 @@
 		$('.modal-title').text('Cetak Label');
 		// Variabel global untuk menyimpan referensi tab yang telah dibuka
 		var printTab;
-		var url = "<?php echo site_url('analisa/get_analisa_lab'); ?>";
+		var url = "<?php echo site_url('analisa/cek indikator kimia dan mikro '); ?>";
 		$.ajax({
 			url: url,
 			type: "POST",
@@ -2347,9 +2349,184 @@
 			success: function(data) {
 				// Cek jika ada data yang memiliki nilai lebih dari 0
 				if (data.indicator == true) {
+					$('#tab_lab').removeAttr('hidden');
+					$('#div_jumlah_sample_lab').removeAttr('hidden');
 
-					$('#input_sample_lab').removeAttr('hidden');
+					loadLabNavbar(id_req);
 
+					// Fungsi untuk memuat navbar berdasarkan jenis lab (Mikro atau Kimia)
+					function loadLabNavbar(id_req) {
+						$.ajax({
+							url: '<?= site_url("analisa/check_lab_data") ?>', // Ganti dengan URL controller Anda
+							type: 'POST',
+							data: {
+								id_req: id_req
+							},
+							dataType: 'json',
+							success: function(response) {
+								if (response.status) {
+									let navbarHtml = '<ul class="nav nav-tabs" role="tablist">';
+
+									// Jika ada Mikro, buatkan navbar Mikro
+									if (response.mikro) {
+										navbarHtml += `
+                        <li class="nav-item">
+                            <a class="nav-link active" id="nav-mikro" data-bs-toggle="tab" href="#mikroTab" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-microscope"></i></span>
+                                <span class="d-none d-sm-block">Mikro</span>
+                            </a>
+                        </li>`;
+									}
+
+									// Jika ada Kimia, buatkan navbar Kimia
+									if (response.kimia) {
+										navbarHtml += `
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-kimia" data-bs-toggle="tab" href="#kimiaTab" role="tab">
+                                <span class="d-block d-sm-none"><i class="fas fa-flask"></i></span>
+                                <span class="d-none d-sm-block">Kimia</span>
+                            </a>
+                        </li>`;
+									}
+
+									navbarHtml += '</ul>';
+
+									// Tampilkan navbar di elemen target
+									$('#load_lab_navbar').html(navbarHtml);
+
+									// Event listener untuk tab Mikro
+									$('#nav-mikro').on('click', function() {
+										loadSampleNavbar(id_req, 'mikro');
+									});
+
+									// Event listener untuk tab Kimia
+									$('#nav-kimia').on('click', function() {
+										loadSampleNavbar(id_req, 'kimia');
+									});
+
+									// Muat DataTables default (aktifkan tab pertama secara otomatis)
+									if (response.mikro) {
+										loadSampleNavbar(id_req, 'mikro');
+									} else if (response.kimia) {
+										loadSampleNavbar(id_req, 'kimia');
+									}
+								} else {
+									console.error('Tidak ada data ditemukan:', response.message);
+								}
+							},
+							error: function(xhr, status, error) {
+								console.error('Error saat memeriksa data:', error);
+							}
+						});
+					}
+
+					// Fungsi untuk memuat navbar sample berdasarkan jenis lab (Mikro/Kimia) dan id_req
+					function loadSampleNavbar(id_req, zjenis_lab) {
+						$.ajax({
+							url: '<?= site_url("analisa/check_lab_data_jumlah_sample") ?>',
+							type: 'POST',
+							data: {
+								id_req: id_req,
+								zjenis_lab: zjenis_lab
+							},
+							dataType: 'json',
+							success: function(response) {
+								if (response.status) {
+									let sampleNavbarHtml = '<ul class="nav nav-tabs" role="tablist">';
+									let sampleTabContentHtml = '<div class="tab-content">';
+
+									response.samples.forEach((sample, index) => {
+										const isActive = index === 0 ? 'active' : '';
+										sampleNavbarHtml += `
+                        <li class="nav-item">
+                            <a class="nav-link ${isActive}" data-bs-toggle="tab" href="#sampleTab${sample.sample_ke}" role="tab" id="nav-sample-${sample.sample_ke}">
+                                <span class="d-block d-sm-none"><i class="fas fa-vial"></i></span>
+                                <span class="d-none d-sm-block">Sample ${sample.sample_ke}</span>
+                            </a>
+                        </li>
+                    `;
+										sampleTabContentHtml += `
+                        <div class="tab-pane ${isActive}" id="sampleTab${sample.sample_ke}" role="tabpanel">
+                            <table id="table-sample-${sample.sample_ke}" class="table table-striped table-bordered" style="width:100%"></table>
+                        </div>
+                    `;
+									});
+
+									sampleNavbarHtml += '</ul>';
+									sampleTabContentHtml += '</div>';
+
+									// Tampilkan navbar sample pada elemen yang sesuai
+									if (zjenis_lab === 'mikro') {
+										$('#sample-navbar-mikro').html(sampleNavbarHtml + sampleTabContentHtml);
+									} else if (zjenis_lab === 'kimia') {
+										$('#sample-navbar-kimia').html(sampleNavbarHtml + sampleTabContentHtml);
+									}
+
+									// Inisialisasi DataTables untuk sample pertama
+									response.samples.forEach((sample, index) => {
+										if (index === 0) {
+											loadDataTable(id_req, zjenis_lab, sample.sample_ke);
+										}
+
+										// Event listener untuk setiap tab sample
+										$(`#nav-sample-${sample.sample_ke}`).on('click', function() {
+											loadDataTable(id_req, zjenis_lab, sample.sample_ke);
+										});
+									});
+								} else {
+									console.error('Tidak ada data sample ditemukan:', response.message);
+								}
+							},
+							error: function(xhr, status, error) {
+								console.error('Error saat memeriksa data sample:', error);
+							}
+						});
+					}
+
+					// Fungsi untuk memuat DataTables berdasarkan sample_ke dan jenis lab
+					function loadDataTable(id_req, zjenis_lab, sample_ke) {
+						const tableId = `#table-sample-${sample_ke}`;
+						$(tableId).DataTable({
+							destroy: true, // Hapus instance DataTable sebelumnya jika ada
+							processing: true,
+							serverSide: true,
+							ajax: {
+								url: '<?= site_url("analisa/load_lab_data") ?>',
+								type: 'POST',
+								data: {
+									id_req: id_req,
+									zjenis_lab: zjenis_lab,
+									sample_ke: sample_ke
+								}
+							},
+							columns: [{
+									data: 'sample_ke',
+									title: 'Sample Ke'
+								},
+								{
+									data: 'short_text',
+									title: 'Short Text'
+								},
+								{
+									data: 'spec',
+									title: 'Spec'
+								},
+								{
+									data: 'zresult',
+									title: 'Result'
+								},
+								{
+									data: 'valid',
+									title: 'Valid'
+								}
+							],
+							responsive: true,
+							autoWidth: false,
+							searching: false, // Menonaktifkan pencarian
+							paging: false, // Menonaktifkan pagination
+							info: false // Menonaktifkan informasi
+						});
+					}
 				} else {
 
 					$('#input_sample_lab').attr('hidden', true);
@@ -3238,7 +3415,6 @@
 	}
 
 	function getAnalisaQc(id_req) {
-
 		$.ajax({
 			url: "<?php echo site_url('analisa/get_analisa_qc'); ?>",
 			type: "POST",
@@ -3248,17 +3424,23 @@
 			dataType: "json",
 			success: function(data) {
 				var tableBody = $('#parameter-table-qc tbody');
-				tableBody.empty(); // Clear previous rows if any
+				tableBody.empty(); // Kosongkan tabel sebelumnya
+
 				var counter = 1;
 				data.data.forEach(function(item) {
 					var row = `
-                    <tr>
-                        <td style="padding: 2px 5px;">${counter++}</td>
-                        <td style="padding: 2px 5px;">${item.short_text}</td>
-                        <td style="padding: 2px 5px;">${item.spec}</td>
-                        <td style="padding: 2px 5px;">${item.result}</td>
-                        <td style="padding: 2px 5px;">${item.valid}</td>
-                    </tr>
+                  <tr>
+						<td style="padding: 2px 5px;">${counter++}</td>
+						<td style="padding: 2px 5px;">${item.short_text}</td>
+						<td style="padding: 2px 5px;">${item.spec}</td>
+						<td style="padding: 2px 5px;">${item.type_mic}</td>
+						<td style="padding: 2px 5px;">${item.result}</td>
+						<td style="padding: 2px 5px;">
+							${item.valid === 'A' && item.type_mic === 'qualitatif' ? 'Sesuai' : 
+							item.valid === 'R' && item.type_mic === 'qualitatif' ? 'Tidak Sesuai' : ''}
+						</td>
+					</tr>
+
                 `;
 					tableBody.append(row);
 				});
@@ -3393,22 +3575,22 @@
 										// Tambahkan baris data yang difilter
 										filteredData.forEach(function(item) {
 											var row = `
-    <tr>
-    <td style="padding: 2px 5px;">${counter++}</td>
-    <td style="padding: 2px 5px; width: 25%;">${item.short_text}</td>
-    <td style="padding: 2px 5px; width: 25%;">${item.spec}</td>
-    <td style="padding: 2px 5px;width: 25%;">
-        <input type="text" class="result-input" data-id-spec="${item.id}" value="${item.result}" style="padding: 2px 5px; width: 100%;">
-    </td>
-    <td style="padding: 2px 5px;width: 25%;">
-        <input type="text" class="valid-input" data-id-spec="${item.id}" value="${item.valid}" style="padding: 2px 5px; width: 100%;">
-    </td>
-    <td style="padding: 2px 5px;width: 25%;">
-        <span onclick="salinHasilKeSemua('${id_req}', '${item.mstrchar}')" class="badge bg-primary" role="button" style="cursor: pointer;">
-            Salin Ke Semua
-        </span>
-    </td>
-</tr>
+												<tr>
+												<td style="padding: 2px 5px;">${counter++}</td>
+												<td style="padding: 2px 5px; width: 25%;">${item.short_text}</td>
+												<td style="padding: 2px 5px; width: 25%;">${item.spec}</td>
+												<td style="padding: 2px 5px;width: 25%;">
+													<input type="text" class="result-input" data-id-spec="${item.id}" value="${item.result}" style="padding: 2px 5px; width: 100%;">
+												</td>
+												<td style="padding: 2px 5px;width: 25%;">
+													<input type="text" class="valid-input" data-id-spec="${item.id}" value="${item.valid}" style="padding: 2px 5px; width: 100%;">
+												</td>
+												<td style="padding: 2px 5px;width: 25%;">
+													<span onclick="salinHasilKeSemua('${id_req}', '${item.mstrchar}')" class="badge bg-primary" role="button" style="cursor: pointer;">
+														Salin Ke Semua
+													</span>
+												</td>
+											</tr>
 
 
         `;
@@ -3782,99 +3964,8 @@
 						}
 					});
 				} else {
+					loadLabData(id_req);
 
-					$.ajax({
-						url: 'sample/get_jumlah_sample', // Ganti dengan URL endpoint Anda
-						type: 'POST',
-						data: {
-							id_req: id_req
-						},
-						dataType: 'json',
-						success: function(response) {
-							var jumlah_sample = response.jumlah_sample;
-
-							$('#input_analis_lab').hide();
-							$('#footer_analisa_selesai').hide();
-							$('#footer_input_analisa').hide();
-							$('#form_hasil_lab').hide();
-							$('#footer_analisa_lab_selesai').hide();
-
-
-							var tabList = $('<ul class="nav nav-tabs" role="tablist"></ul>');
-							var tabContent = $('<div class="tab-content p-3 text-muted"></div>');
-
-							// Membuat tab dan konten tab dinamis
-							for (var i = 1; i <= jumlah_sample; i++) {
-								// Membuat tab dinamis
-								tabList.append(`
-                                <li class="nav-item">
-                                    <a class="nav-link ${i === 1 ? 'active' : ''}" data-bs-toggle="tab" href="#sample${i}" role="tab" data-iteration="${i}">
-                                        <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                        <span class="d-none d-sm-block">Sample ${i}</span>
-                                    </a>
-                                </li>
-                            `);
-
-								// Membuat konten tab dinamis
-								tabContent.append(`
-                                <div class="tab-pane ${i === 1 ? 'active' : ''}" id="sample${i}" role="tabpanel">
-                                    <table id="parameter-table-lab-${i}" class="table table-bordered" style="border: 1px solid #dee2e6; padding: 2px 5px; width: 80%;">
-                                        <thead>
-                                            <tr>
-                                                <th style="padding: 2px 5px;">No</th>
-                                                <th style="padding: 2px 5px;">Parameter</th>
-                                                <th style="padding: 2px 5px;">Spesifikasi</th>
-                                                <th style="padding: 2px 5px;">Hasil</th>
-                                                <th style="padding: 2px 5px;">Keterangan</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Baris akan ditambahkan di sini secara dinamis -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            `);
-							}
-
-							// Gabungkan tabList dan tabContent ke dalam div load_data_sample_lab
-							$('#load_data_sample_lab').empty().append(tabList).append(tabContent);
-
-							// Tambahkan event listener untuk setiap tab
-							// Event listener ketika tab diklik
-							$('.nav-link').on('click', function() {
-								var iterationValue = $(this).data('iteration');
-								var tableBody = $(`#parameter-table-lab-${iterationValue} tbody`);
-								tableBody.empty(); // Kosongkan baris tabel sebelumnya
-
-								// Filter data berdasarkan sample_ke
-								var filteredData = data.data.filter(function(item) {
-									return item.sample_ke == iterationValue;
-								});
-
-								// Reset counter untuk penomoran yang sesuai
-								var counter = 1;
-
-								// Tambahkan baris data yang terfilter ke tabel
-								filteredData.forEach(function(item) {
-									var row = `
-									<tr>
-										<td style="padding: 2px 5px;">${counter++}</td>
-										<td style="padding: 2px 5px;">${item.short_text}</td>
-										<td style="padding: 2px 5px;">${item.spec}</td>
-											<td style="padding: 2px 5px;">${item.result}</td>
-												<td style="padding: 2px 5px;">${item.valid}</td>
-									
-									</tr>
-								`;
-									tableBody.append(row);
-								});
-							});
-
-
-							// Trigger klik pada tab pertama secara default untuk mengisi data awal
-							tabList.find('.nav-link.active').trigger('click');
-						}
-					});
 				}
 			},
 			error: function(xhr, status, error) {
@@ -3882,6 +3973,198 @@
 			}
 		});
 	}
+
+	function loadLabData(id_req) {
+		$.ajax({
+			url: 'sample/get_jumlah_sample',
+			type: 'POST',
+			data: {
+				id_req: id_req
+			},
+			dataType: 'json',
+			success: function(response) {
+				var kimia = response.kimia || 0;
+				var mikro = response.mikro || 0;
+
+				// Kosongkan elemen tab
+				var tabList = $('<ul class="nav nav-tabs" role="tablist"></ul>');
+				var tabContent = $('<div class="tab-content p-3 text-muted"></div>');
+
+				if (kimia !== 0) {
+					tabList.append(`
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#kimia-tab" role="tab" data-sub-lab="kimia">
+                            <span>Kimia</span>
+                        </a>
+                    </li>
+                `);
+					tabContent.append(`
+                    <div class="tab-pane active" id="kimia-tab" role="tabpanel">
+                        <table id="kimia-table" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Parameter</th>
+                                    <th>Spesifikasi</th>
+                                    <th>Hasil</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                `);
+				}
+
+				if (mikro !== 0) {
+					tabList.append(`
+                    <li class="nav-item">
+                        <a class="nav-link ${kimia === 0 ? 'active' : ''}" data-bs-toggle="tab" href="#mikro-tab" role="tab" data-sub-lab="mikro">
+                            <span>Mikro</span>
+                        </a>
+                    </li>
+                `);
+					tabContent.append(`
+                    <div class="tab-pane ${kimia === 0 ? 'active' : ''}" id="mikro-tab" role="tabpanel">
+                        <table id="mikro-table" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Parameter</th>
+                                    <th>Spesifikasi</th>
+                                    <th>Hasil</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                `);
+				}
+
+				$('#load_data_sample_lab').empty().append(tabList).append(tabContent);
+
+				// Event delegation untuk klik tab
+				$(document).on('click', '.nav-link', function() {
+					var zjenis_lab = $(this).data('sub-lab');
+					loadzjenis_labData(zjenis_lab);
+				});
+
+				// Trigger tab pertama
+				tabList.find('.nav-link.active').trigger('click');
+			},
+			error: function() {
+				console.error('Gagal memuat data.');
+			},
+		});
+	}
+
+	function loadzjenis_labData(zjenis_lab) {
+		$.ajax({
+			url: 'sample/get_lab_data',
+			type: 'POST',
+			data: {
+				zjenis_lab: zjenis_lab
+			},
+			dataType: 'json',
+			success: function(response) {
+				if (response.status) {
+					// Kosongkan elemen sebelumnya
+					var tabList = $('<ul class="nav nav-tabs" role="tablist"></ul>');
+					var tabContent = $('<div class="tab-content p-3 text-muted"></div>');
+					var jumlahSample = response.jumlah_sample || 0;
+
+					// Buat tab dan konten berdasarkan jumlah sample
+					for (let i = 1; i <= jumlahSample; i++) {
+						// Tambahkan tab
+						tabList.append(`
+                        <li class="nav-item">
+                            <a class="nav-link ${i === 1 ? 'active' : ''}" data-bs-toggle="tab" href="#sample${i}" role="tab" data-sample="${i}">
+                                <span>Sample ${i}</span>
+                            </a>
+                        </li>
+                    `);
+
+						// Tambahkan konten tab
+						tabContent.append(`
+                        <div class="tab-pane ${i === 1 ? 'active' : ''}" id="sample${i}" role="tabpanel">
+                            <table id="parameter-table-lab-${i}" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Parameter</th>
+                                        <th>Spesifikasi</th>
+                                        <th>Hasil</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Baris akan ditambahkan secara dinamis -->
+                                </tbody>
+                            </table>
+                        </div>
+                    `);
+					}
+
+					// Kosongkan dan isi ulang elemen DOM dengan tab baru
+					$(`#${zjenis_lab}-table`).empty().append(tabList).append(tabContent);
+
+					// Event listener untuk tab klik
+					$(document).on('click', `.nav-link[data-bs-toggle="tab"]`, function() {
+						var sampleKe = $(this).data('sample');
+						loadSampleData(zjenis_lab, sampleKe); // Panggil fungsi untuk memuat data berdasarkan sample_ke
+					});
+
+					// Trigger tab pertama secara default
+					tabList.find('.nav-link.active').trigger('click');
+				} else {
+					console.error('Data tidak ditemukan.');
+				}
+			},
+			error: function() {
+				console.error('Gagal memuat data.');
+			},
+		});
+	}
+
+	// Fungsi untuk memuat data berdasarkan zjenis_lab dan sample_ke
+	function loadSampleData(zjenis_lab, sampleKe) {
+		$.ajax({
+			url: 'sample/get_sample_data', // Endpoint backend
+			type: 'POST',
+			data: {
+				zjenis_lab: zjenis_lab,
+				sample_ke: sampleKe
+			},
+			dataType: 'json',
+			success: function(response) {
+				if (response.status) {
+					var tableBody = $(`#parameter-table-lab-${sampleKe} tbody`);
+					tableBody.empty(); // Kosongkan tabel
+
+					// Menambahkan data ke tabel
+					response.data.forEach(function(item, index) {
+						tableBody.append(`
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${item.short_text}</td>
+                            <td>${item.spec}</td>
+                            <td>${item.result}</td>
+                            <td>${item.valid}</td>
+                        </tr>
+                    `);
+					});
+				} else {
+					console.error('Tidak ada data ditemukan');
+				}
+			},
+			error: function() {
+				console.error('Gagal memuat data sample ke:', sampleKe);
+			},
+		});
+	}
+
+
 
 
 
@@ -4074,7 +4357,7 @@
 				$('#info_realisasi_rnd').text(formatDate(data.waktu_out_rnd) || "");
 
 				$('#info_distribusi').text(data.info_distribusi + " ( " + data.total_waktu_pengerjaan + " " + data.satuan_waktu + " ) " || "");
-				$('#info_sample_lab').text(data.jumlah_sample || "");
+				$('#info_sample_lab').text((data.jumlah_sample + '  || Kimia: ' + data.kimia + ' & Mikro: ' + data.mikro) || "");
 				$('#info_sample_rnd').text(data.jumlah_sample_rnd || "");
 			},
 			error: function(jqXHR, textStatus, errorThrown) {

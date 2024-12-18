@@ -54,6 +54,19 @@ class User_model extends CI_Model
     }
 
 
+    public function get_kode_admin_by_pernr($pernr)
+    {
+        $this->db->select('kode_admin');
+        $this->db->from('tb_master_user');
+        $this->db->where('pernr', $pernr);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->row()->kode_admin; // Mengembalikan nilai kode_admin
+        } else {
+            return null; // Jika tidak ditemukan
+        }
+    }
 
 
     function get_datatables()
@@ -109,7 +122,7 @@ class User_model extends CI_Model
 
         return $query->row();
     }
-    
+
     public function get_user_by_pernr($pernr)
     {
         $this->db->from('tb_master_user');

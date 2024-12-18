@@ -696,7 +696,10 @@
             dataType: "json",
             success: function(data) {
                 $('#info_nama_qc').text(data.nama_qc || "");
-                $('#info_material').text(data.material.replace(/^0+/, "") || "");
+                $('#info_material').html(
+                    (data.material ? +data.material.replace(/^0+/, "") + '<strong>' : '') +
+                    ' | Karantina Ke : ' + (data.lv_total || '') + '</strong>'
+                );
                 $('#info_created_at').text(data.created_at === '0000-00-00' ? '' : formatDate(data.created_at));
                 $('#info_desc').text(data.desc || "");
                 $('#info_no_karantina').text(data.no_karantina || "");
@@ -890,7 +893,7 @@
                             <td style="padding: 2px 5px;">${counter++}</td>
                             <td style="padding: 2px 5px;">${item.short_text}</td>
                             <td style="padding: 2px 5px;">${item.spec}</td>
-                            <td style="padding: 2px 5px;">${item.result}</td>
+                            <td style="padding: 2px 5px;">${item.zresult}</td>
                             <td style="padding: 2px 5px;">${item.valid}</td>
                         </tr>
                     `;
@@ -924,15 +927,18 @@
                 var counter = 1;
                 data.data.forEach(function(item) {
                     var row = `
-                    <tr>
-                        <td style="padding: 2px 5px;">${counter++}</td>
-                        <td style="padding: 2px 5px;">${item.short_text}</td>
-                        <td style="padding: 2px 5px;">${item.spec}</td>
-                        <td style="padding: 2px 5px;">${item.result}</td>
-                        <td style="padding: 2px 5px;">
-                            ${item.valid === 'A' ? 'Sesuai' : item.valid === 'R' ? 'Tidak Sesuai' : 'Belum Diverifikasi'}
-                        </td>
-                    </tr>
+                  <tr>
+						<td style="padding: 2px 5px;">${counter++}</td>
+						<td style="padding: 2px 5px;">${item.short_text}</td>
+						<td style="padding: 2px 5px;">${item.spec}</td>
+						<td style="padding: 2px 5px;">${item.type_mic}</td>
+						<td style="padding: 2px 5px;">${item.zresult}</td>
+						<td style="padding: 2px 5px;">
+							${item.valid === 'A' && item.type_mic === 'qualitatif' ? 'Sesuai' : 
+							item.valid === 'R' && item.type_mic === 'qualitatif' ? 'Tidak Sesuai' : ''}
+						</td>
+					</tr>
+
                 `;
                     tableBody.append(row);
                 });
@@ -1067,7 +1073,7 @@
 										<td style="padding: 2px 5px;">${counter++}</td>
 										<td style="padding: 2px 5px;">${item.short_text}</td>
 										<td style="padding: 2px 5px;">${item.spec}</td>
-										<td style="padding: 2px 5px;">${item.result}</td>
+										<td style="padding: 2px 5px;">${item.zresult}</td>
 										<td style="padding: 2px 5px;">${item.valid}</td>
 									
 									</tr>
@@ -1161,7 +1167,7 @@
 										<td style="padding: 2px 5px;">${counter++}</td>
 										<td style="padding: 2px 5px;">${item.short_text}</td>
 										<td style="padding: 2px 5px;">${item.spec}</td>
-										<td style="padding: 2px 5px;">${item.result}</td>
+										<td style="padding: 2px 5px;">${item.zresult}</td>
 										<td style="padding: 2px 5px;">${item.valid}</td>
 									
 									</tr>
@@ -1255,7 +1261,7 @@
 										<td style="padding: 2px 5px;">${counter++}</td>
 										<td style="padding: 2px 5px;">${item.short_text}</td>
 										<td style="padding: 2px 5px;">${item.spec}</td>
-										<td style="padding: 2px 5px;">${item.result}</td>
+										<td style="padding: 2px 5px;">${item.zresult}</td>
 										<td style="padding: 2px 5px;">${item.valid}</td>
 									</tr>
 								`;
@@ -1765,6 +1771,7 @@
                                     <th style="padding: 2px 5px;">No</th>
                                     <th style="padding: 2px 5px;">Parameter</th>
                                     <th style="padding: 2px 5px;">Spec</th>
+                                    <th style="padding: 2px 5px;">Type MIC</th>
                                     <th style="padding: 2px 5px;">Hasil</th>
                                     <th style="padding: 2px 5px;">Evaluation</th>
                             </thead>

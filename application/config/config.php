@@ -25,8 +25,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 // $config['base_url'] = 'http://19.0.2.227/satulab';
 // $config['base_url'] = 'http://193.13.7.72/satulab';
-$config['base_url'] = 'http://193.13.7.3/satulab';
-// $config['base_url'] = 'http://localhost/satulab';
+// $config['base_url'] = 'http://193.13.7.3/satulab';
+$config['base_url'] = 'http://localhost/satulab';
 /*
 |--------------------------------------------------------------------------
 | Index File

@@ -134,7 +134,7 @@ class Analisa_Tracking_model extends CI_Model
 	{
 		$this->db->select('waktu_tracking, desc_tracking');
 		$this->db->from('tb_analisa_tracking');
-		$this->db->where('unit_progress !=', 'R&D');
+		$this->db->where('unit_progress', 'ALL');
 		$this->db->where('id_req', $id_req);
 
 		// Urutkan hasil berdasarkan waktu_tracking dengan NULL di urutan pertama

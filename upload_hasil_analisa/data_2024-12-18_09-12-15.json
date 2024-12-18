@@ -1,0 +1,42 @@
+{
+    "plant": "S100",
+    "id_kar": "17",
+    "month": "12",
+    "years": "2024",
+    "id_req": "1000000149",
+    "ed_plus": "231",
+    "ed_next": "2027-08-24",
+    "status_kar": "Close",
+    "keputusan_qc": "asdasd",
+    "kesimpulan_qc": "Bahan \/ Produk diproses ulang, Bahan \/ Produk diproses ke tahap berikutnya",
+    "spec": [
+        {
+            "plant": "S100",
+            "id_kar": "17",
+            "month": "12",
+            "years": "2024",
+            "sample_ke": "0",
+            "oprshrttxt": "QC GUDANG KEMASAN",
+            "mstrchar": "MKFX0608",
+            "short_text": "pitch (104-106 MM)",
+            "spec": "104,0000000 ~ 106,0000000",
+            "zzresult": "105",
+            "manual_add": "0",
+            "valid": "105"
+        },
+        {
+            "plant": "S100",
+            "id_kar": "17",
+            "month": "12",
+            "years": "2024",
+            "sample_ke": "0",
+            "oprshrttxt": "QC GUDANG KEMASAN",
+            "mstrchar": "MKFE0005",
+            "short_text": "Arah gulungan terbaca",
+            "spec": "Terbaca",
+            "zzresult": "10",
+            "manual_add": "0",
+            "valid": "A"
+        }
+    ]
+}

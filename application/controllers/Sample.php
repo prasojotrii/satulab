@@ -45,7 +45,22 @@ class Sample extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
     }
 
+    public function cek_indikator()
+    {
+        $id_req = $this->input->post('id_req'); // Mengambil parameter dari POST
 
+        // Validasi id_req
+        if (!$id_req) {
+            echo json_encode(['status' => 'error', 'message' => 'ID Request tidak ditemukan.']);
+            return;
+        }
+
+        // Memanggil model untuk memeriksa data kimia dan mikro
+        $result = $this->Analisa_sample_model->cek_indikator_lab($id_req);
+
+        // Mengembalikan data sebagai JSON
+        echo json_encode($result);
+    }
 
     public function index()
     {
@@ -867,7 +882,7 @@ class Sample extends CI_Controller
 
 
         // Query utama untuk mengambil nilai jumlah_sample, jumlah_sample_rnd, dan ed
-        $this->db->select('jumlah_sample, jumlah_sample_rnd, ed');
+        $this->db->select('jumlah_sample, jumlah_sample_rnd, ed,kimia, mikro');
         $this->db->from('tb_analisa_request_sap');
         $this->db->where('id_req', $id_req);
         $query = $this->db->get();
@@ -879,12 +894,16 @@ class Sample extends CI_Controller
             // Jika jumlah_sample = 0, gunakan jumlah_sample_rnd
             $jumlah_sample = $result->jumlah_sample > 0 ? $result->jumlah_sample : $result->jumlah_sample_rnd;
             $ed = $result->ed;
-
+            $kimia = $result->kimia;
+            $mikro = $result->mikro;
             // Cek apakah ada data dengan drnd = 1
             if ($queryrnd->num_rows() > 0) {
                 // Kirim respon JSON jika ada data dengan drnd = 1
                 echo json_encode([
                     'status' => 'success',
+                    'jumlah_sample' => $jumlah_sample,
+                    'kimia' => $kimia,
+                    'mikro' => $mikro,
                     'jumlah_sample' => $jumlah_sample,
                     'ed' => $ed,
                     'info_usulan' => 'true'
@@ -894,6 +913,8 @@ class Sample extends CI_Controller
                 echo json_encode([
                     'status' => 'success',
                     'jumlah_sample' => $jumlah_sample,
+                    'kimia' => $kimia,
+                    'mikro' => $mikro,
                     'ed' => $ed,
                     'info_usulan' => 'false'
                 ]);
@@ -904,7 +925,44 @@ class Sample extends CI_Controller
         }
     }
 
+    public function get_lab_data()
+    {
+        $zjenis_lab = $this->input->post('zjenis_lab'); // Parameter dari AJAX
+        if (in_array($zjenis_lab, ['kimia', 'mikro'])) {
 
+            $data = $this->Analisa_sample_model->get_lab_data($zjenis_lab);
+            echo json_encode(['status' => true, 'data' => $data]);
+        } else {
+            echo json_encode(['status' => false, 'message' => 'Invalid zjenis_lab']);
+        }
+    }
+    // Fungsi untuk mendapatkan data sample berdasarkan zjenis_lab dan sample_ke
+    public function get_sample_data()
+    {
+        // Mendapatkan parameter zjenis_lab dan sample_ke dari POST
+        $zjenis_lab = $this->input->post('zjenis_lab');
+        $sample_ke = $this->input->post('sample_ke');
+
+        // Validasi parameter yang diterima
+        if (!in_array($zjenis_lab, ['kimia', 'mikro'])) {
+            echo json_encode(['status' => false, 'message' => 'Sub Lab tidak valid']);
+            return;
+        }
+        if (!is_numeric($sample_ke) || $sample_ke < 1) {
+            echo json_encode(['status' => false, 'message' => 'Sample ke tidak valid']);
+            return;
+        }
+
+        // Memanggil fungsi model untuk mengambil data
+        $data = $this->Analisa_sample_model->get_sample_data($zjenis_lab, $sample_ke);
+
+        // Cek apakah data ditemukan
+        if ($data !== false) {
+            echo json_encode(['status' => true, 'data' => $data]);
+        } else {
+            echo json_encode(['status' => false, 'message' => 'Data tidak ditemukan']);
+        }
+    }
     public function print_memo_data2()
     {
         $ids = $this->input->post('ids'); // Get IDs from POST request
@@ -1107,21 +1165,7 @@ class Sample extends CI_Controller
             $tanggalPenerimaanContoh = isset($trackingData[0]['waktu_tracking']) ? date('d/m/Y', strtotime($trackingData[0]['waktu_tracking'])) : 'N/A';
             // Determine registration number
             $pernr = $this->session->userdata('pernr');
-            $char = '';
-            switch ($pernr) {
-                case '90002459':
-                    $char = 'C';
-                    break;
-                case '90001330':
-                    $char = 'A';
-                    break;
-                case '90001457':
-                    $char = 'B';
-                    break;
-                default:
-                    $char = 'X'; // default value if needed
-            }
-
+            $kode_admin = $this->User_model->get_kode_admin_by_pernr($pernr);
             // Get the current month and year
             $currentMonth = date('m');
             $currentYear = date('Y');
@@ -1136,7 +1180,7 @@ class Sample extends CI_Controller
             $this->db->from('tb_analisa_request_sap');
             $count = $this->db->count_all_results();
 
-            $nomorRegistrasi = 'LABSM/' . $romanMonth . '/' . $currentDay . '/' . $char . '/' . ($count + 1);
+            $nomorRegistrasi = 'LABSM/' . $romanMonth . '/' . $currentDay . '/' . $kode_admin . '/' . ($count + 1);
 
             // Update tb_analisa_request_sap with nomor_registrasi_lab
             $this->db->where_in('id_req', $ids);
@@ -1318,6 +1362,30 @@ class Sample extends CI_Controller
         } else {
             // Jika semua data memiliki label_lab, kembalikan found
             echo json_encode(['status' => 'found']);
+        }
+    }
+    public function get_kimia_mikro_status()
+    {
+        // Pastikan ini adalah request Ajax
+        if ($this->input->is_ajax_request()) {
+            $id_req = $this->input->post('id_req'); // Ambil id_req dari request
+
+            if (empty($id_req)) {
+                echo json_encode(['status' => false, 'message' => 'ID request tidak ditemukan']);
+                return;
+            }
+
+            // Panggil model untuk mendapatkan data kimia dan mikro
+
+            $result = $this->Analisa_sample_model->getKimiaMikroStatus($id_req);
+
+            if ($result) {
+                echo json_encode(['status' => true, 'kimia' => $result['kimia'], 'mikro' => $result['mikro']]);
+            } else {
+                echo json_encode(['status' => false, 'message' => 'Data tidak ditemukan']);
+            }
+        } else {
+            show_error('Permintaan tidak valid', 403);
         }
     }
 

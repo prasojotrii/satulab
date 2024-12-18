@@ -25,12 +25,12 @@ class Analisa_request_model extends CI_Model
             $query = $this->db->get('tb_request_approval');
 
             // Ambil hasil query dalam bentuk array
-            $result = $query->result_array();
+            $zresult = $query->result_array();
 
             // Pastikan ada data yang ditemukan
-            if (!empty($result)) {
+            if (!empty($zresult)) {
                 // Ambil semua id_req yang ditemukan dari hasil query
-                $id_reqs = array_column($result, 'id_req');
+                $id_reqs = array_column($zresult, 'id_req');
 
                 // Ambil jobdesk dari session
                 $jobdesk = $this->session->userdata("jobdesk");
@@ -271,11 +271,11 @@ class Analisa_request_model extends CI_Model
         $this->db->from('view_analisa_full');
         $query = $this->db->get();
 
-        $results = $query->result_array(); // Memastikan hasilnya selalu berupa array
+        $zresults = $query->result_array(); // Memastikan hasilnya selalu berupa array
 
         $invalidRows = [];
 
-        foreach ($results as $index => $row) {
+        foreach ($zresults as $index => $row) {
             if (empty($row['penyelia']) || $row['penyelia'] == '') {
                 $invalidRows[] = $index + 1; // Menyimpan nomor baris (1-based index)
             }
@@ -346,7 +346,7 @@ class Analisa_request_model extends CI_Model
     }
     public function get_request_data_by_id($id_req)
     {
-        $this->db->select('id_req, nama_qc, material, created_at,keputusan_rnd, desc, sloc, quantity, zmasalah, uom, jumlah_sample,jumlah_sample_rnd,sloc_desc, no_karantina, waktu_pengerjaan_qc, waktu_in_qc, waktu_out_qc,waktu_pengerjaan_lab, waktu_in_lab, waktu_out_lab,waktu_pengerjaan_rnd, waktu_in_rnd, waktu_out_rnd, satuan_waktu, total_waktu_pengerjaan');
+        $this->db->select('id_req, nama_qc, material, created_at,keputusan_rnd, desc, sloc, quantity, zmasalah, uom, jumlah_sample,jumlah_sample_rnd,sloc_desc, no_karantina, waktu_pengerjaan_qc, waktu_in_qc, waktu_out_qc,waktu_pengerjaan_lab, waktu_in_lab, waktu_out_lab,waktu_pengerjaan_rnd, waktu_in_rnd, waktu_out_rnd, satuan_waktu, total_waktu_pengerjaan , lv_total, kimia, mikro');
         $this->db->from('tb_analisa_request_sap');
         $this->db->where('id_req', $id_req);
         $query = $this->db->get();
@@ -397,7 +397,7 @@ class Analisa_request_model extends CI_Model
 
     public function get_analisa_lab_by_id($id_req)
     {
-        $this->db->select('id, short_text, mstrchar, result,spec,valid, sample_ke');
+        $this->db->select('id, short_text, mstrchar, zresult,spec,valid, sample_ke');
         $this->db->from('tb_analisa_request_spec');
         $this->db->where('id_req', $id_req);
         $this->db->where('cat_oprshrttxt', 'LAB');
@@ -445,7 +445,7 @@ class Analisa_request_model extends CI_Model
     }
     public function get_analisa_rnd_by_id($id_req)
     {
-        $this->db->select('short_text, result,spec,valid');
+        $this->db->select('short_text, zresult,spec,valid');
         $this->db->from('tb_analisa_request_spec');
         $this->db->where('id_req', $id_req);
         $this->db->where('oprshrttxt', 'Lab Formulasi');
@@ -454,7 +454,8 @@ class Analisa_request_model extends CI_Model
     }
     public function get_analisa_qc_id($id_req)
     {
-        $this->db->select('short_text, result,spec,valid');
+        $this->db->select('short_text, zresult,spec,valid,type_mic');
+        $this->db->order_by('type_mic', 'asc');
         $this->db->from('tb_analisa_request_spec');
         $this->db->where('id_req', $id_req);
         $this->db->like('oprshrttxt', 'QC', 'after'); // Menggunakan LIKE untuk mencocokkan string yang dimulai dengan 'QC'
@@ -637,7 +638,7 @@ class Analisa_request_model extends CI_Model
                     'mstrchar' => $spec['mstrchar'],
                     'short_text' => $spec['short_text'],
                     'spec' => $spec['spec'],
-                    'result' => $spec['result'],
+                    'zresult' => $spec['zresult'],
                     'manual_add' => $spec['manual_add'] ? 1 : 0,
                     'valid' => isset($spec['valid']) ? $spec['valid'] : null
                 );
@@ -653,12 +654,12 @@ class Analisa_request_model extends CI_Model
 
     public function get_all_identitas()
     {
-        return $this->db->get('dummy_identitas')->result_array();
+        return $this->db->get('dummy_identitas')->zresult_array();
     }
 
     public function get_spec_by_id_kar($id_kar)
     {
-        return $this->db->get_where('dummy_spec', array('id_kar' => $id_kar))->result_array();
+        return $this->db->get_where('dummy_spec', array('id_kar' => $id_kar))->zresult_array();
     }
 
     public function get_all_analisa_request()
@@ -676,7 +677,7 @@ class Analisa_request_model extends CI_Model
     public function get_spec_by_id_req($id)
     {
         // Ambil data dari tabel tb_analisa_request_spec berdasarkan id_req
-        $this->db->select('oprshrttxt, sample_ke, mstrchar, short_text, spec, result, manual_add, valid');
+        $this->db->select('oprshrttxt, sample_ke, mstrchar, short_text, spec, zresult, manual_add, valid');
         $this->db->from('tb_analisa_request_spec');
         $this->db->where('id_req', $id);
         $query = $this->db->get();
@@ -698,7 +699,7 @@ class Analisa_request_model extends CI_Model
             $querySpec = $this->db->get();
 
             // Menambahkan hasil query spec ke dalam key 'spec' di item saat ini
-            $item['spec'] = $querySpec->result_array();
+            $item['spec'] = $querySpec->zresult_array();
         }
 
         // Mengembalikan data dalam format JSON
@@ -718,10 +719,10 @@ class Analisa_request_model extends CI_Model
     }
     public function get_data_spec_by_id_req($id_req)
     {
-        // Pilih kolom dengan alias pada kolom result untuk menjadi zresult
+        // Pilih kolom dengan alias pada kolom zresult untuk menjadi zzresult
         $this->db->select('tb_analisa_request_sap.plant, tb_analisa_request_spec.id_kar, tb_analisa_request_sap.month, tb_analisa_request_sap.years, 
                            tb_analisa_request_spec.sample_ke, tb_analisa_request_spec.oprshrttxt, tb_analisa_request_spec.mstrchar, 
-                           tb_analisa_request_spec.short_text, tb_analisa_request_spec.spec, tb_analisa_request_spec.result AS zresult, 
+                           tb_analisa_request_spec.short_text, tb_analisa_request_spec.spec, tb_analisa_request_spec.zresult AS zzresult, 
                            tb_analisa_request_spec.manual_add, tb_analisa_request_spec.valid');
 
         // Join tabel tb_analisa_request_spec dengan tb_analisa_request_sap untuk mendapatkan plant dan month
@@ -757,7 +758,7 @@ class Analisa_request_model extends CI_Model
     public function get_data_spec($id_req)
     {
         // Query untuk mengambil data dari tabel analisa_request_spec berdasarkan id_req
-        $this->db->select('oprshrttxt, mstrchar, short_text, spec, result, manual_add, valid');
+        $this->db->select('oprshrttxt, mstrchar, short_text, spec, zresult, manual_add, valid');
         $this->db->from('tb_analisa_request_spec');
         $this->db->where('id_req', $id_req);
         $query = $this->db->get();
@@ -768,5 +769,76 @@ class Analisa_request_model extends CI_Model
         } else {
             return []; // Jika tidak ada data, kembalikan array kosong
         }
+    }
+
+    // Ambil data lab (Mikro dan Kimia)
+    public function get_lab_data($id_req)
+    {
+        // Query untuk mengambil data lab berdasarkan id_req dan cat_oprshrttxt = 'LAB'
+        $this->db->select('zjenis_lab');
+        $this->db->from('tb_analisa_request_spec');
+        $this->db->where('id_req', $id_req);
+        $this->db->where('cat_oprshrttxt', 'LAB');
+        $query = $this->db->get();
+
+        // Memeriksa apakah ada jenis lab yang mikro atau kimia
+        $result = $query->result_array();
+
+        $data = [
+            'mikro' => false,
+            'kimia' => false
+        ];
+
+        // Cek jika ada jenis lab yang mikro atau kimia
+        foreach ($result as $row) {
+            if ($row['zjenis_lab'] == 'Mikro') {
+                $data['mikro'] = true;
+            } elseif ($row['zjenis_lab'] == 'Kimia') {
+                $data['kimia'] = true;
+            }
+        }
+
+        return $data;
+    }
+
+
+    // Ambil sample berdasarkan jenis lab dan id_req
+    public function get_samples($id_req, $zjenis_lab)
+    {
+        $this->db->select('sample_ke');
+        $this->db->from('tb_analisa_request_spec');
+        $this->db->where('id_req', $id_req);
+        $this->db->where('zjenis_lab', $zjenis_lab);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    // Ambil data lab berdasarkan sample_ke, jenis_lab dan id_req
+    public function get_lab_data_by_sample($id_req, $zjenis_lab, $sample_ke)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_analisa_request_spec');
+        $this->db->where('id_req', $id_req);
+        $this->db->where('zjenis_lab', $zjenis_lab);
+        $this->db->where('sample_ke', $sample_ke);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    // Fungsi untuk mendapatkan sample berdasarkan id_req dan jenis lab
+    public function get_samples_by_lab_type($id_req, $zjenis_lab)
+    {
+        // Query untuk mengambil data sample berdasarkan id_req dan jenis lab (Mikro/Kimia)
+        $this->db->select('sample_ke'); // Misalnya hanya memilih kolom sample_ke, sesuaikan dengan yang dibutuhkan
+        $this->db->from('tb_analisa_request_spec');
+        $this->db->where('id_req', $id_req);
+        $this->db->where('cat_oprshrttxt', 'LAB');
+        $this->db->where('zjenis_lab', $zjenis_lab);
+        $query = $this->db->get();
+
+        // Mengembalikan hasil query
+        return $query->result_array(); // Kembalikan hasil sebagai array
     }
 }

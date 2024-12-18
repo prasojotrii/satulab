@@ -49,13 +49,7 @@ class Api extends CI_Controller
         $data = json_decode($json, true);
 
         // Validasi null untuk identitas_data
-        $required_fields = array(
-            'month', 'years', 'plant', 'sloc', 'sloc_desc', 'zyear', 'material', 'desc',
-            'batch', 'no_karantina', 'batch_lapangan', 'manuf_date', 'ed', 'uji_ulang',
-            'tgl_karantina', 'zmasalah', 'desc_mslh', 'nama_qc', 'nama_koor', 'nama_ka', 'dqc',
-            'dlab', 'drnd', 'zind', 'status_kar', 'insplot', 'order', 'matdoc', 'matyears',
-            'ztransaksi', 'quantity', 'uom', 'reff'
-        );
+        $required_fields = array();
 
         foreach ($required_fields as $field) {
             if (!isset($data[$field]) || $data[$field] === null) {
@@ -143,6 +137,7 @@ class Api extends CI_Controller
             'nama_koordinator' => $data['nama_koordinator'],
             'email_koordinator' => $data['email_koordinator'],
             'qndat' => $data['qndat'],
+            'lv_total' => $data['lv_total']
         );
 
         $this->db->trans_start();
@@ -214,14 +209,22 @@ class Api extends CI_Controller
                     $sample_ke = '0';
 
                     // Logika untuk menentukan nilai $valid berdasarkan $spec['zresult']
-                    if (isset($spec['zresult'])) {
-                        if ($spec['zresult'] == 10) {
-                            $valid = 'A';
-                        } elseif ($spec['zresult'] == 20) {
-                            $valid = 'R';
+                    if (isset($spec['zresult']) && isset($spec['type_mic'])) {
+                        $type_mic = strtolower($spec['type_mic']); // Normalisasi input untuk menghindari masalah kapitalisasi
+
+                        if ($type_mic === 'qualitatif') {
+                            if ($spec['zresult'] == 10) {
+                                $valid = 'A';
+                            } elseif ($spec['zresult'] == 20) {
+                                $valid = 'R';
+                            }
+                        } elseif ($type_mic === 'quantitatif') {
+                            $valid = $spec['zresult']; // Nilai langsung diambil untuk "quantitatif"
                         } else {
-                            $valid = 'R'; // Default jika nilai $spec['zresult'] tidak 10 atau 20
+                            $valid = $spec['zresult']; // Default jika tipe tidak dikenal
                         }
+                    } else {
+                        $valid = $spec['zresult']; // Default jika salah satu nilai tidak tersedia
                     }
                 }
 
@@ -233,11 +236,15 @@ class Api extends CI_Controller
                     'short_text' => $spec['short_text'],
                     'oprshrttxt' => $oprshrttxt,
                     'cat_oprshrttxt' => $cat_oprshrttxt,
+                    'zjenis_lab' => $spec['zjenis_lab'],
                     'sample_ke' =>  $sample_ke,
                     'spec' => $spec['spec'],
-                    'result' => $spec['zresult'],
+                    'zresult' => $spec['zresult'],
                     'manual_add' => $spec['manual_add'],
-                    'valid' => $valid
+                    'valid' => $valid,
+                    'short_text_method' => $spec['short_text_method'],
+                    'type_mic' => $spec['type_mic']
+
                 );
             }
 
@@ -260,12 +267,15 @@ class Api extends CI_Controller
             array(
                 'id_req' => $id_req,
                 'waktu_tracking' => $current_time,
-                'desc_tracking' => 'Permintaan Analisa dibuat'
+                'desc_tracking' => 'Permintaan Analisa dibuat',
+                'unit_progress' => 'ALL'
+
             ),
             array(
                 'id_req' => $id_req,
                 'waktu_tracking' => NULL,
-                'desc_tracking' => 'Proses Approval Ka Unit'
+                'desc_tracking' => 'Proses Approval Ka Unit',
+                'unit_progress' => 'ALL'
             )
         );
 
@@ -315,9 +325,6 @@ class Api extends CI_Controller
 
                 if ($response) {
                     // respon dari system rnd
-
-
-                    // echo $response;
 
                     $this->output
                         ->set_status_header(200) // OK
@@ -796,6 +803,7 @@ class Api extends CI_Controller
             $tracking_data2 = array(
                 'id_req' => $id,
                 'waktu_tracking' => NULL,
+                'unit_progress' => 'ALL',
                 'desc_tracking' => 'Proses approval manager QC'
             );
 

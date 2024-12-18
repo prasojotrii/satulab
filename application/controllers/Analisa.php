@@ -102,7 +102,7 @@ class Analisa extends CI_Controller
 
         if ($query->num_rows() > 0) {
             // Jika data ditemukan, lanjutkan dengan mengambil jumlah sample
-            $this->db->select('jumlah_sample, jumlah_sample_rnd');
+            $this->db->select('jumlah_sample, jumlah_sample_rnd,mikro,kimia');
             $this->db->where('id_req', $id_req); // Pastikan id_req, bukan id
             $this->db->from('tb_analisa_request_sap');
             $query2 = $this->db->get();
@@ -110,12 +110,15 @@ class Analisa extends CI_Controller
             $result = $query2->row_array();
             $jumlah_sample = $result['jumlah_sample'];
             $jumlah_sample_rnd = $result['jumlah_sample_rnd'];
-
+            $kimia = $result['kimia'];
+            $mikro = $result['mikro'];
             // Logika untuk menampilkan tombol kirim sample
             $show_kirim_sample = ($jumlah_sample_rnd != 0 || $jumlah_sample != 0);
             echo json_encode([
                 'show_kirim_sample' => $show_kirim_sample,
                 'jumlah_sample' => $jumlah_sample,
+                'kimia' => $kimia,
+                'mikro' => $mikro,
                 'jumlah_sample_rnd' => $jumlah_sample_rnd,
                 // 'waktu_tracking' => $query->row()->waktu_tracking // Tambahkan waktu_tracking ke dalam respon
             ]);
@@ -124,6 +127,8 @@ class Analisa extends CI_Controller
             echo json_encode([
                 'show_kirim_sample' => false,
                 'jumlah_sample' => 0,
+                'kimia' => 0,
+                'mikro' => 0,
                 'jumlah_sample_rnd' => 0,
                 'waktu_tracking' => null // Jika tidak ada data, tampilkan waktu_tracking sebagai null
             ]);
@@ -401,7 +406,7 @@ class Analisa extends CI_Controller
         $id_req = $this->input->post('id_req');
         $mstrchar = $this->input->post('mstrchar');
         $id_spec = $this->input->post('id_spec');
-        $result = $this->input->post('result');
+        $result = $this->input->post('zresult');
         $valid = $this->input->post('valid');
 
         if (!$id_req || !$mstrchar || !$id_spec) {
@@ -447,7 +452,7 @@ class Analisa extends CI_Controller
     public function update_analisa_lab()
     {
         $id = $this->input->post('id_req');
-        $result = $this->input->post('result');
+        $result = $this->input->post('zresult');
         $valid = $this->input->post('valid');
 
         // Load the database
@@ -455,7 +460,7 @@ class Analisa extends CI_Controller
 
         // Prepare data for update
         $data = array(
-            'result' => $result,
+            'zresult' => $result,
             'valid' => $valid
         );
 
@@ -609,7 +614,9 @@ class Analisa extends CI_Controller
         $tracking_data = array(
             'id_req' => $id,
             'waktu_tracking' => NULL,
+            'unit_progress' => 'ALL',
             'desc_tracking' => 'Proses approval hasil analisa oleh Ka Unit Lab'
+
         );
         $insert_tracking = $this->db->insert('tb_analisa_tracking', $tracking_data);
 
@@ -646,6 +653,7 @@ class Analisa extends CI_Controller
         $tracking_data = array(
             'id_req' => $id,
             'waktu_tracking' => date('Y-m-d H:i:s'),
+            'unit_progress' => 'ALL',
             'desc_tracking' => 'Proses Input data analisa Lab'
         );
         $insert_tracking = $this->db->insert('tb_analisa_tracking', $tracking_data);
@@ -718,12 +726,13 @@ class Analisa extends CI_Controller
             $tracking_data = array(
                 'id_req' => $id,
                 'waktu_tracking' => date('Y-m-d H:i:s'),
+                'unit_progress' => 'ALL',
                 'desc_tracking' => 'Proses Analisa Lab selesai,  menunggu hasil RND'
             );
             $this->db->insert('tb_analisa_tracking', $tracking_data);
 
             // Cek apakah ada data dengan oprshrttxt = 'RND'
-            $this->db->select('id_req, oprshrttxt, result');
+            $this->db->select('id_req, oprshrttxt, zresult');
             $this->db->from('tb_analisa_request_spec');
             $this->db->where('id_req', $id);
             $this->db->where('cat_oprshrttxt', 'RND');
@@ -892,6 +901,7 @@ class Analisa extends CI_Controller
         $tracking_data = array(
             'id_req' => $id,
             'waktu_tracking' => NULL,
+            'unit_progress' => 'ALL',
             'desc_tracking' => 'Approval KA Unit RND'
         );
         $this->db->insert('tb_analisa_tracking', $tracking_data);
@@ -912,6 +922,7 @@ class Analisa extends CI_Controller
             $tracking_data2 = array(
                 'id_req' => $id,
                 'waktu_tracking' => NULL,
+                'unit_progress' => 'ALL',
                 'desc_tracking' => 'Proses approval Ka Unit R&D'
             );
             $this->db->insert('tb_analisa_tracking', $tracking_data2);
@@ -963,6 +974,7 @@ class Analisa extends CI_Controller
             $tracking_data2 = array(
                 'id_req' => $id,
                 'waktu_tracking' => NULL,
+                'unit_progress' => 'ALL',
                 'desc_tracking' => 'Proses approval manager QC'
             );
             $this->db->insert('tb_analisa_tracking', $tracking_data2);
@@ -1192,7 +1204,7 @@ class Analisa extends CI_Controller
                         'short_text' => $spec['short_text'],
                         'oprshrttxt' => $spec['oprshrttxt'],
                         'spec' => $spec['spec'],
-                        'result' => $spec['result'],
+                        'zresult' => $spec['zresult'],
                         'manual_add' => $spec['manual_add']
                     );
 
@@ -1341,7 +1353,7 @@ class Analisa extends CI_Controller
                         'short_text' => $spec['short_text'],
                         'oprshrttxt' => $spec['oprshrttxt'],
                         'spec' => $spec['spec'],
-                        'result' => $spec['result'],
+                        'zresult' => $spec['zresult'],
                         'manual_add' => $spec['manual_add']
                     );
 
@@ -2044,6 +2056,7 @@ class Analisa extends CI_Controller
                 $tracking_data = [
                     'id_req' => $id_req,
                     'waktu_tracking' => date("Y-m-d H:i:s"),
+                    'unit_progress' => 'ALL',
                     'desc_tracking' => 'Pengiriman sample ke lab analisa'
                 ];
                 $this->db->insert('tb_analisa_tracking', $tracking_data);
@@ -2096,82 +2109,183 @@ class Analisa extends CI_Controller
 
     public function insert_jumlah_sample()
     {
-        $id_req = $this->input->post('id_req');
-        $jumlah_sample = (int)$this->input->post('jumlah_sample_lab');
+        $id_req = $this->input->post('id_req', TRUE);
+        $jumlah_sample_lab = (int)$this->input->post('jumlah_sample_lab');
         $jumlah_sample_rnd = (int)$this->input->post('jumlah_sample_rnd');
-        $this->session->set_userdata('print_data', [
-            'id_req' => $id_req,
-            'jumlah_sample' => $jumlah_sample + $jumlah_sample_rnd
-        ]);
-        // Validasi input
+        $jumlah_sample_kimia = (int)$this->input->post('jumlah_sample_kimia');
+        $jumlah_sample_mikro = (int)$this->input->post('jumlah_sample_mikro');
+
         if (!$id_req) {
             echo json_encode(['status' => 'error', 'message' => 'Data tidak lengkap.']);
             return;
         }
 
-        $this->db->trans_start(); // Mulai transaksi
+        $this->db->trans_start();
 
         try {
-            // Update jumlah sample di tb_analisa_request_sap
-            $this->db->set('jumlah_sample', $jumlah_sample)
-                ->set('jumlah_sample_rnd', $jumlah_sample_rnd)
+            // Update data di tb_analisa_request_sap
+            $this->db->set([
+                'jumlah_sample' => $jumlah_sample_lab,
+                'jumlah_sample_rnd' => $jumlah_sample_rnd,
+                'kimia' => $jumlah_sample_kimia,
+                'mikro' => $jumlah_sample_mikro
+            ])
                 ->where('id_req', $id_req)
                 ->update('tb_analisa_request_sap');
 
-            // Update waktu_tracking pada record yang memiliki nilai NULL
+            // Update waktu_tracking jika NULL
             $this->db->set('waktu_tracking', date('Y-m-d H:i:s'))
                 ->where('id_req', $id_req)
                 ->where('waktu_tracking IS NULL', NULL, FALSE)
                 ->update('tb_analisa_tracking');
 
-            // Clone rows in tb_analisa_request_spec and update sample_ke
-            $this->cloneRowsAndUpdateSampleKe($id_req, $jumlah_sample);
-
-            // Hitung jumlah baris yang mengandung LAB berdasarkan id_req
-            $lab_count = $this->db->where('id_req', $id_req)
-                ->where('cat_oprshrttxt LIKE', '%LAB%')
-                ->from('tb_analisa_request_spec')
-                ->count_all_results();
-
-            // Menyimpan data tracking dan update progress berdasarkan nilai lab_count
-            if ($lab_count > 1) {
-                $this->db->where('id_req', $id_req);
-                $this->db->where('waktu_tracking IS NULL', NULL, FALSE); // Filter untuk baris dengan waktu_tracking NULL
-                $this->db->update('tb_analisa_tracking', array(
-                    'waktu_tracking' => date('Y-m-d H:i:s')
-                ));
-            } elseif ($lab_count == 0) {
-                $this->db->where('id_req', $id_req);
-                $this->db->where('waktu_tracking IS NULL', NULL, FALSE); // Filter untuk baris dengan waktu_tracking NULL
-                $this->db->update('tb_analisa_tracking', array(
-                    'waktu_tracking' => date('Y-m-d H:i:s')
-                ));
-            } else {
-                throw new Exception('Kategori oprshrttxt tidak valid.');
+            // Kloning data berdasarkan jumlah sample
+            if ($jumlah_sample_kimia > 0) {
+                $this->clone_sample('Kimia', $id_req, $jumlah_sample_kimia);
+            }
+            if ($jumlah_sample_mikro > 0) {
+                $this->clone_sample('Mikro', $id_req, $jumlah_sample_mikro);
             }
 
-            // Selesaikan transaksi
+            // Set session untuk print label
+            $this->session->set_userdata('print_data', [
+                'id_req' => $id_req,
+                'jumlah_sample' => $jumlah_sample_lab + $jumlah_sample_rnd
+            ]);
+
             $this->db->trans_complete();
 
             if ($this->db->trans_status() === FALSE) {
                 throw new Exception('Transaksi gagal.');
             }
 
-            // Set session data untuk mencetak label
-            $this->session->set_userdata('print_data', [
-                'id_req' => $id_req,
-                'jumlah_sample' => $jumlah_sample + $jumlah_sample_rnd
-            ]);
-
             echo json_encode(['status' => TRUE]);
         } catch (Exception $e) {
-            // Rollback transaksi jika terjadi kesalahan
             $this->db->trans_rollback();
             echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
         }
     }
 
-    private function cloneRowsAndUpdateSampleKe($id_req, $jumlah_sample)
+    private function clone_sample($jenis_lab, $id_req, $jumlah_sample)
+    {
+        // Pastikan filter `id_req` dan `zjenis_lab` benar
+        $query = $this->db->where('zjenis_lab', $jenis_lab)
+            ->where('id_req', $id_req)
+            ->where('id_oprshrttxtreq', 'LAB')
+            ->get('tb_analisa_request_spec');
+
+        if ($query->num_rows() > 0) {
+            $data = $query->result();
+            $new_data = [];
+
+            foreach ($data as $row) {
+                for ($i = 0; $i < $jumlah_sample; $i++) {
+                    $new_data[] = [
+                        'id_req' => $id_req,
+                        'zjenis_lab' => $jenis_lab,
+                        'sample_ke' => $row->sample_ke + $i,
+                        'short_text' => $row->short_text,
+                        'spec' => $row->spec,
+                        'short_text_method' => $row->short_text_method,
+                        'type_mic' => $row->type_mic,
+                        'mstrchar' => $row->mstrchar,
+                        'manual_add' => $row->manual_add,
+                        'cat_oprshrttxt' => $row->cat_oprshrttxt,
+                        'oprshrttxt' => $row->oprshrttxt,
+                        'zresult' => $row->zresult,
+                        'valid' => $row->valid
+                    ];
+                }
+            }
+
+            // Insert batch untuk efisiensi
+            if (!empty($new_data)) {
+                $this->db->insert_batch('tb_analisa_request_spec', $new_data);
+            }
+        }
+    }
+
+    // Function untuk memeriksa data lab (Mikro dan Kimia)
+    public function check_lab_data()
+    {
+        $id_req = $this->input->post('id_req');
+
+        // Ambil data lab (Mikro dan Kimia) dari database
+        $data = $this->Analisa_request_model->get_lab_data($id_req);
+
+        if ($data) {
+            // Response data lab
+            echo json_encode([
+                'status' => true,
+                'mikro' => $data['mikro'],
+                'kimia' => $data['kimia']
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Data lab tidak ditemukan'
+            ]);
+        }
+    }
+
+    // Function untuk memeriksa data sample
+    // Fungsi untuk mendapatkan data jumlah sample berdasarkan jenis lab dan id_req
+    public function check_lab_data_jumlah_sample()
+    {
+        // Ambil data dari POST request
+        $id_req = $this->input->post('id_req');
+        $zjenis_lab = $this->input->post('zjenis_lab'); // Mikro atau Kimia
+
+        // Validasi parameter
+        if (empty($id_req) || empty($zjenis_lab)) {
+            echo json_encode([
+                'status' => false,
+                'message' => 'id_req atau jenis lab tidak valid'
+            ]);
+            return;
+        }
+
+        // Ambil jumlah sample berdasarkan id_req dan jenis lab
+        $samples = $this->Analisa_request_model->get_samples_by_lab_type($id_req, $zjenis_lab);
+
+        // Jika data sample ditemukan
+        if ($samples) {
+            echo json_encode([
+                'status' => true,
+                'samples' => $samples
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Data sample tidak ditemukan'
+            ]);
+        }
+    }
+
+    // Function untuk memuat data lab berdasarkan sample_ke
+    public function load_lab_data()
+    {
+        $id_req = $this->input->post('id_req');
+        $zjenis_lab = $this->input->post('zjenis_lab');
+        $sample_ke = $this->input->post('sample_ke');
+
+        // Ambil data lab berdasarkan sample_ke dan jenis lab
+        $data = $this->Analisa_request_model->get_lab_data_by_sample($id_req, $zjenis_lab, $sample_ke);
+
+        if ($data) {
+            echo json_encode([
+                'status' => true,
+                'data' => $data
+            ]);
+        } else {
+            echo json_encode([
+                'status' => false,
+                'message' => 'Data tidak ditemukan'
+            ]);
+        }
+    }
+
+    private function cloneRowsAndUpdateSampleKe($id_req, $jumlah_sample, $jumlah_sample_kimia, $jumlah_sample_mikro)
     {
         // Get the rows to be cloned
         $this->db->where('id_req', $id_req);

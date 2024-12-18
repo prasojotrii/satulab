@@ -209,6 +209,7 @@ class Approval extends CI_Controller
             $tracking_data = array(
                 'id_req' => $id_req,
                 'waktu_tracking' => date('Y-m-d H:i:s'),
+                'unit_progress' => 'ALL',
                 'desc_tracking' => 'Proses Analisa Lab'
             );
             $this->db->insert('tb_analisa_tracking', $tracking_data);
@@ -309,12 +310,14 @@ class Approval extends CI_Controller
                             $tracking_data = array(
                                 'id_req' => $id_req,
                                 'waktu_tracking' => NULL,
+                                'unit_progress' => 'ALL',
                                 'desc_tracking' => 'Proses Approval Manager R&D'
                             );
                         } elseif ($jobdesk === 'Manager QC') {
                             $tracking_data = array(
                                 'id_req' => $id_req,
                                 'waktu_tracking' => NULL,
+                                'unit_progress' => 'ALL',
                                 'desc_tracking' => 'Proses Approval Manager QC'
                             );
                         }
@@ -425,12 +428,14 @@ class Approval extends CI_Controller
                             $tracking_data = array(
                                 'id_req' => $id_req,
                                 'waktu_tracking' => NULL,
+                                'unit_progress' => 'ALL',
                                 'desc_tracking' => 'Proses Approval Manager R&D'
                             );
                         } elseif ($jobdesk === 'Manager QC') {
                             $tracking_data = array(
                                 'id_req' => $id_req,
                                 'waktu_tracking' => NULL,
+                                'unit_progress' => 'ALL',
                                 'desc_tracking' => 'Proses Approval Manager QC'
                             );
                         }
@@ -561,6 +566,7 @@ class Approval extends CI_Controller
                 $tracking_data = array(
                     'id_req' => $id_req,
                     'waktu_tracking' => date('Y-m-d H:i:s'),
+                    'unit_progress' => 'ALL',
                     'desc_tracking' => 'Karantina Selesai'
                 );
                 $this->db->insert('tb_analisa_tracking', $tracking_data);
@@ -591,6 +597,7 @@ class Approval extends CI_Controller
             $tracking_data = array(
                 'id_req' => $id_req,
                 'waktu_tracking' => date('Y-m-d H:i:s'),
+                     'unit_progress' => 'ALL',
                 'desc_tracking' => 'Proses Input data analisa Lab'
             );
             $this->db->insert('tb_analisa_tracking', $tracking_data);
@@ -646,7 +653,8 @@ class Approval extends CI_Controller
                                 $tracking_data = array(
                                     'id_req' => $id_req,
                                     'waktu_tracking' => NULL,
-                                    'desc_tracking' => 'Proses Approval Koordinator QC'
+                                    'desc_tracking' => 'Proses Approval Koordinator QC',
+                                         'unit_progress' => 'ALL'
                                 );
 
 
@@ -681,15 +689,14 @@ class Approval extends CI_Controller
                             $this->db->update('tb_analisa_tracking', array(
                                 'waktu_tracking' => date('Y-m-d H:i:s')
                             ));
-
                             if ($result['dlab'] == 1) {
-                                // Proses untuk dlab saja
+                                // Jika dlab aktif, prioritas diberikan untuk proses dlab
                                 $this->proses_cetak_label_dlab($id_req);
-                            } elseif ($result['drnd'] == 1 && $result['dlab'] != 1) {
-                                // Proses untuk drnd saja
+                            } elseif ($result['drnd'] == 1) {
+                                // Jika drnd aktif tetapi dlab tidak aktif, proses drnd dilakukan
                                 $this->proses_cetak_label_drnd($id_req);
-                            } elseif ($result['dlab'] != 1 && $result['drnd'] != 1) {
-                                // Proses jika tidak ada dlab dan drnd
+                            } else {
+                                // Jika dlab dan drnd keduanya tidak aktif, proses approval QC dilakukan
                                 $this->proses_approval_manager_qc($id_req);
                             }
                         } else {
@@ -714,7 +721,8 @@ class Approval extends CI_Controller
                     $tracking_data = array(
                         'id_req' => $id_req,
                         'waktu_tracking' => date('Y-m-d H:i:s'),
-                        'desc_tracking' => 'Analisa Ditolak'
+                        'desc_tracking' => 'Analisa Ditolak',
+                             'unit_progress' => 'ALL'
                     );
                     $this->db->insert('tb_analisa_tracking', $tracking_data);
 
@@ -755,7 +763,7 @@ class Approval extends CI_Controller
                 'id_req' => $id_req,
                 'waktu_tracking' => NULL,
                 'desc_tracking' => 'Proses mencetak label ke sample',
-                'unit_progress' => ''
+                    'unit_progress' => 'ALL'
             )
         );
         $this->db->insert_batch('tb_analisa_tracking', $tracking_data);
@@ -778,7 +786,7 @@ class Approval extends CI_Controller
                 'id_req' => $id_req,
                 'waktu_tracking' => NULL,
                 'desc_tracking' => 'Proses mencetak label ke sample',
-                'unit_progress' => ''
+                    'unit_progress' => 'ALL'
             ),
             array(
                 'id_req' => $id_req,
@@ -849,7 +857,8 @@ class Approval extends CI_Controller
             $tracking_data2 = array(
                 'id_req' => $id_req,
                 'waktu_tracking' => NULL,
-                'desc_tracking' => 'Proses approval Manager QC'
+                'desc_tracking' => 'Proses approval Manager QC',
+                'unit_progress' => 'ALL'
             );
             $this->db->insert('tb_analisa_tracking', $tracking_data2);
 
